@@ -6,14 +6,13 @@ import (
 )
 
 func TestGoogleTTS(t *testing.T) {
-
 	tests := []struct {
 		Text   string
 		Lang   string
 		Output string
 	}{
-		{"hello, world", "en", "tts_google_en.mp3"},
-		{"你好，这是中文", "zh-Hans", "tts_google_zh-Hans.mp3"},
+		{"Hello, Do you speak a foreign language? One language is never enough.", "en", "tts_google_en.mp3"},
+		{"你好，你会不会说其他外语？只会一种语言是不够的。", "zh-Hans", "tts_google_zh-Hans.mp3"},
 	}
 
 	for _, tt := range tests {
