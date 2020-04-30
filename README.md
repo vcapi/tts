@@ -1,6 +1,7 @@
 # TTS
 This is a TTS(Text-to-Speech) Library.
 
+![Test](https://github.com/vcapi/tts/workflows/Test/badge.svg)
 
 ### Usage
 Use google TTS api
