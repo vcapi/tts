@@ -9,6 +9,7 @@ Use google TTS api
 package main
 
 import (
+    "context"
     "os"
 
     "github.com/vcapi/tts"
@@ -20,7 +21,9 @@ func main() {
         panic(err)
     }
     defer fs.Close()
-    err = tts.Google("hello", "en", fs)
+
+    ctx := context.TODO()
+    err = tts.Google(ctx, "hello", "en", fs)
     if err != nil {
         panic(err)
     }

@@ -1,6 +1,7 @@
 package tts
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -12,7 +13,7 @@ const (
 )
 
 // Google tts api
-func Google(text, lang string, out io.Writer) error {
+func Google(ctx context.Context, text, lang string, out io.Writer) error {
 	params := make(url.Values)
 	params.Add("ie", "UTF-8")
 	params.Add("q", text)
@@ -20,7 +21,7 @@ func Google(text, lang string, out io.Writer) error {
 	params.Add("client", "tw-ob")
 
 	addr := fmt.Sprintf("%s?%s", googUrl, params.Encode())
-	res, err := request(http.MethodGet, addr, nil)
+	res, err := request(ctx, http.MethodGet, addr, nil)
 	if err != nil {
 		return err
 	}

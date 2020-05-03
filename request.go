@@ -1,6 +1,7 @@
 package tts
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -13,12 +14,12 @@ const (
 	httpTimeout = 5 * time.Second
 )
 
-func request(method, addr string, body io.Reader) (*http.Response, error) {
+func request(ctx context.Context, method, addr string, body io.Reader) (*http.Response, error) {
 	up, err := url.Parse(addr)
 	if err != nil {
 		return nil, err
 	}
-	req, err := http.NewRequest(method, addr, body)
+	req, err := http.NewRequestWithContext(ctx, method, addr, body)
 	if err != nil {
 		return nil, err
 	}
