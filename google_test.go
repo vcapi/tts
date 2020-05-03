@@ -1,6 +1,7 @@
 package tts
 
 import (
+	"context"
 	"os"
 	"testing"
 )
@@ -21,7 +22,8 @@ func TestGoogleTTS(t *testing.T) {
 			t.Errorf("Open tts output file error: %v", err)
 			return
 		}
-		err = Google(tt.Text, tt.Lang, fs)
+		ctx := context.TODO()
+		err = Google(ctx, tt.Text, tt.Lang, fs)
 		if err != nil {
 			t.Errorf("Google tts error: %v", err)
 			return
